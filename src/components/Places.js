@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default function Places() {
-  return <div><h1>Places</h1></div>;
+export const Places = ({place}) => { 
+  return <div>
+    <h1>{place.name}</h1>
+    </div>;
 }
 
 export default Places;
