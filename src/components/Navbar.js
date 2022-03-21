@@ -1,56 +1,77 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import { useLocation} from 'react-router-dom';
+
+import logo from "../static/travel.svg"
+
 export const Navbar = () => {
+    let location = useLocation();
   
-  return (
-    <div>
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-blue-800">
-        <div className="container flex flex-wrap justify-between items-center mx-auto">
-          <img src="travel.png" alt="logo" width="80" height="80" />
-          <Link
-                  to="/"
-                  className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                  aria-current="page"
-                >
-                  Travel Advisor
-                </Link>
-          <div className="flex md:order-2 justify-end">
-            <div className="hidden relative mr-3 md:mr-0 md:block">
-              <input
-                type="text"
-                id="email-adress-icon"
-                className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-white sm:text-sm  dark:bg-blue-600 dark:border-white dark:placeholder-gray-400 dark:text-white "
-                placeholder="Search..."
-              />
+   return (    
+
+<div>
+    <nav className="bg-white dark:bg-purple-800  ">
+        <div className="max-w-7xl mx-auto px-8">
+            <div className="flex items-center justify-between h-16">
+                <div className=" flex items-center">
+                    {/* <Link className="flex-shrink-0" to="/"> */}
+                        <img className="h-8 w-8" src={logo} alt="Travel"/>
+                    {/* </Link> */}
+                    <div className="hidden md:block">
+                        <div className="ml-10 flex space-x-4">
+                            <Link className= {` ${location.pathname==='/'?"text-purple-800":"text-purple-300"  } hover:text-purple-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium`} to="/" >
+                                Travel Advisor
+                            </Link>
+                            <Link className={`${location.pathname==='/map'?"text-purple-800":"text-purple-300"  } dark:text-white  hover:text-purple-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium`} to="/map">
+                                Map
+                            </Link>
+                            <Link className={`${location.pathname==='/about'?"text-purple-800":"text-purple-300"  }  hover:text-purple-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium`} to="/about">
+                                About
+                            </Link>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div className="block">
+                    <div className="ml-4 flex items-center md:ml-6">
+                    </div>
+                </div>
+                <div className="-mr-2 flex md:hidden">
+                    <button className="text-purple-800 dark:text-white hover:text-purple-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+                        <svg width="20" height="20" fill="currentColor" className="h-8 w-8" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div classname=" ml-10 flex space-x-4 ">
+                <button type="button" class="ml-5 text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 float-right ">Sign Up</button> 
+                <button type="button" class="ml-5 text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 float-right ">Log In</button>     
+                </div>  
             </div>
-          </div>
-          <div
-            className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
-            id="mobile-menu-3"
-          >
-            <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-              <li>
-                <Link
-                  to="/"
-                  className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-                  aria-current="page"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  About
-                </Link>
-              </li>
-            </ul>
-          </div>
+            
         </div>
-      </nav>
-    </div>
+        <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <Link className="text-purple-300 hover:text-purple-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" to="/">
+                    Home
+                </Link>
+                <Link className="text-purple-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium" to="/#">
+                    Gallery
+                </Link>
+                <Link className="text-purple-300 hover:text-purple-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" to="/#">
+                    Content
+                </Link>
+                <Link className="text-purple-300 hover:text-purple-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" to="/#">
+                    Contact
+                </Link>
+            </div>
+        </div>
+    </nav>
+</div>
+
   );
 };
 export default Navbar;

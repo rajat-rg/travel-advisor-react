@@ -4,14 +4,16 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Footer from "./components/Footer";
+import { Index } from "./components/Index";
 
 function App() {
   return (
-    <div className="App bg-gray-300">
+    <div className="App bg-purple-100">
       <Router>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Index />} />
+          <Route exact path="/map" element={<Home />} />
           <Route exact path="/about" element={<About />} />
         </Routes>
 
