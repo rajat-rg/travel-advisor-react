@@ -7,10 +7,10 @@ const getPlaces = async (sw, ne) =>{
             method: 'GET',
             
             params: {
-              bl_latitude: ne.lat,
-              bl_longitude: ne.lng,
-              tr_longitude: sw.lat,
-              tr_latitude: sw.lng,
+              bl_latitude: sw.lat,
+              tr_latitude: ne.lat,
+              bl_longitude: sw.lng,
+              tr_longitude: ne.lng,
               
             },
             headers: {
@@ -18,7 +18,6 @@ const getPlaces = async (sw, ne) =>{
               'x-rapidapi-key': 'd9a9e9776bmsh81b21eaa5580c93p1ae022jsn20354001224d'
             }
           });
-          // console.log(sw, ne);
         return data;
 
     } catch (error) {

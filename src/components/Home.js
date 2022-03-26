@@ -21,7 +21,7 @@ export const Home = () => {
       getPlaces(bounds.sw, bounds.ne).then((data) =>{
           setPlaces(data)
       })
-    }, [coordinates, bounds])
+    }, [coordinates, bounds],setTimeout(3000))
     
   return (
     <div>
