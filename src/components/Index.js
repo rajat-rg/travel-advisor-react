@@ -16,7 +16,7 @@ export const Index = () => {
         <Carousel/>
           <p className="font-normal dark:text-white  text-4xl py-2 text-purple-900 text-center">Search for Indian cities to visit by catagory</p> 
         <div className="my-4 w-4/5 ml-32 grid grid-rows-3 grid-flow-col gap-4">
-          <Card name="Sight seeing" img={sight} slug="sight"  /> 
+          <Card name="Sight seeing" img={sight} slug="sight" /> 
           <Card name="Hills" img={hills} slug="hills" /> 
           <Card name="Urban culture" img={urban} slug="urban" /> 
           <Card name="Adventure" img={adventure} slug="adventure" /> 

@@ -1,9 +1,9 @@
 import axios from 'axios'
-const URL= 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
 
-const getPlaces = async (sw, ne) =>{
+
+const getPlaces = async (type, sw, ne) =>{
     try {
-        const {data:{data}} = await axios.get(URL, {
+        const {data:{data}} = await axios.get(`https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`, {
             method: 'GET',
             
             params: {
