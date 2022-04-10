@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import GoogleMapReact from "google-map-react";
+import slugContext from "../context/slugContext";
 
 const MapsAPI = "AIzaSyBxvTeAFa69RjNoC8CsRfrkBDT6MSzjgPc";
-export const Map = ({coordinates, setCoordinates, setBounds}) => {
+export const Map = ({coordinates, setCoordinates, setBounds, weather}) => {
   
-  
-  
+  const {catPlace, category, slug, updateCatPlace} = useContext(slugContext); 
+  const [first, setFirst] = useState(true)
   return (
     <div className="bg-blue-400 h-[90vh] w-full ">
       <GoogleMapReact
@@ -16,11 +17,22 @@ export const Map = ({coordinates, setCoordinates, setBounds}) => {
         margin={[50, 50, 50, 50]}
         options={""}
         onChange={(e) => {
-          setCoordinates({ lat: e.center.lat, lng: e.center.lng });
-          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+          if(first && catPlace!=="" )
+          {
+            const {lat, lng} = category[slug]?.filter((place)=>place.name=== catPlace)[0]
+            setCoordinates({ lat: lat , lng: lng });
+            setFirst(false);
+            updateCatPlace("")
+          }else
+          {
+            
+            setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+            setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+          }
         }}
-        onChildClick={""}
-      ></GoogleMapReact>
+      >
+
+      </GoogleMapReact>
     </div>
   );
 };

@@ -25,9 +25,7 @@ export const Navbar = () => {
                             <Link className={`${location.pathname==='/map'?"text-purple-800":"text-purple-400"  } dark:text-white  hover:text-purple-800 dark:hover:text-purple-800 px-3 py-2 rounded-md text-sm font-medium`} to="/map">
                                 Map
                             </Link>
-                            <Link className={`${location.pathname==='/about'?"text-purple-800":"text-purple-400"  }  hover:text-purple-800 dark:hover:text-purple-800 px-3 py-2 rounded-md text-sm font-medium`} to="/about">
-                                About
-                            </Link>
+                            
                             
                         </div>
                         
