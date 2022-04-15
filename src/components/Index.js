@@ -24,7 +24,7 @@ export const Index = () => {
           <Card name="Family/ Religious" img={family} slug="family" /> 
           <Card name="Art and Culture" img={art} slug="art" /> 
           <Card name="Budget friendly" img={budget} slug="budget" /> 
-          <Card name="Traditional and history" img={history} slug="traditional" /> 
+          <Card name="Traditional and history" img={history} slug="history" /> 
           
 
         </div>

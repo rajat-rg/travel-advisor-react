@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import { Index } from "./components/Index";
 import Category from "./components/Category";
 import SlugState from "./context/SlugState";
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route exact path="/" element={<Index />} />
           <Route exact path="/map" element={<Home />} />
           <Route path="/category/:slug" element={<Category />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
 
         <Footer />
