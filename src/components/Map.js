@@ -2,7 +2,6 @@ import React, {useState, useContext} from "react";
 import GoogleMapReact from "google-map-react";
 import slugContext from "../context/slugContext";
 
-const MapsAPI = "AIzaSyBxvTeAFa69RjNoC8CsRfrkBDT6MSzjgPc";
 export const Map = ({coordinates, setCoordinates, setBounds, weather}) => {
   
   const {catPlace, category, slug, updateCatPlace} = useContext(slugContext); 
@@ -10,7 +9,7 @@ export const Map = ({coordinates, setCoordinates, setBounds, weather}) => {
   return (
     <div className="bg-blue-400 h-[90vh] w-full ">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: MapsAPI }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
         defaultCenter={{lat:28.7041, lng:77.1025}}
         center={coordinates}
         defaultZoom={14}

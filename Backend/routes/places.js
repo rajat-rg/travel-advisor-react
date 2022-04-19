@@ -14,23 +14,29 @@ router.get("/fetchplaces", fetchuser, async (req, res) => {
   }
 });
 
-// Add a note using POST: /api/places/addplace .Login required
+// Add a place using POST: /api/places/addplace .Login required
 router.post(
   "/addplace",
   fetchuser,
   async (req, res) => {
     const { name, location, address, email, phone, website, price } = req.body;
-
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     try {
+      // let ifplace = await Places.findOne({ place: req.body.location });
+      // if (ifplace) {
+      //   res.status(400).json({ success, error: "You have already added this place." });
+      // }
       const place = new Places({ name, location, address, email, phone, website, price, user: req.user.id });
       const savedPlace = await place.save();
-      res.json(savedPlace);
+      success = true;
+      res.json({success, savedPlace});
     } catch (err) {
-      res.status(500).send("SoMe ErRoR oCcUrEd");
+      console.log(err)
+      res.status(500).send(err);
     }
   }
 );

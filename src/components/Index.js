@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 import Card from './Card'
 import Carousel from './Carousel'
 import sight from "../static/sight.jpg"
@@ -11,7 +12,19 @@ import art from "../static/art.jpg"
 import history from "../static/history.jpg"
 import budget from "../static/budget.jpg"
 export const Index = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(localStorage.getItem("token"))
+    {
+
+    }
+    else
+    {navigate("/login")}
+  
+    
+  }, [])
   return (
+    
       <>
         <Carousel/>
           <p className="font-normal dark:text-white  text-4xl py-2 text-purple-900 text-center">Search for Indian cities to visit by catagory</p> 

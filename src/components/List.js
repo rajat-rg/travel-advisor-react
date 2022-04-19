@@ -49,7 +49,7 @@ export const List = (props) => {
       <div className="container my-3">
         {props.places?.map((place, i) => (
           <div className="list-item m-3" key={i}>
-            <Places place={place} />
+            <Places place={place} key={place.location_id}/>
           </div>
         ))}
       </div>

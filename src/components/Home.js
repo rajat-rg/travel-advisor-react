@@ -2,9 +2,20 @@ import React, {useEffect, useState} from "react";
 import {getPlaces, getWeather} from "../api";
 import List from "./List";
 import Map from "./Map";
-
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(localStorage.getItem("token"))
+    {
+
+    }
+    else
+    {navigate("/login")}
+  
+    
+  }, [])
     const [places, setPlaces] = useState([])
     const [weather, setWeather] = useState([])
     const [filteredPlaces, setFilteredPlaces] = useState([])
@@ -35,11 +46,11 @@ export const Home = () => {
       // })
 
       // ye uncomment krna hai taki api chal ske
-      // getPlaces(type, bounds.sw, bounds.ne).then((data) =>{
-      //     setPlaces(data?.filter((place)=> place.name && place.num_reviews >0))
-      // //     setFilteredPlaces([])
-      //     setIsLoding(false)
-      // })
+      getPlaces(type, bounds.sw, bounds.ne).then((data) =>{
+          setPlaces(data?.filter((place)=> place.name && place.num_reviews >0))
+          setFilteredPlaces([])
+          setIsLoding(false)
+      })
       
     }, [type, coordinates, bounds])
     

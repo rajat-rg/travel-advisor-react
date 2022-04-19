@@ -6,7 +6,6 @@ const PlaceSchema = new Schema({
     location:  {type: String, required:true}, // String is shorthand for {type: String}
     name:  {type: String, required:true}, // String is shorthand for {type: String}
     address: {type: String},
-    email: {type: String},
     phone: {type: String},
     website: {type: String},
     price: {type: String},

@@ -1,6 +1,28 @@
 import React from 'react';
 import img from "../static/art.jpg"
 export const Places = ({place}) => { 
+  const handleSave = async(e) =>{
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/places/addplace",
+    {method:"POST",
+      headers: {
+        "Content-Type":"application/json",
+        "auth-token": localStorage.getItem('token')
+      },
+      body:JSON.stringify({name:place.name,
+      location:place.location_id,
+      address:place.address,
+      phone:place.phone,
+      website:place.website,
+      price:place.price_level})
+    }
+  );
+  const json = await response.json();
+  if(json.success)
+  {
+    alert("place saved")
+  }
+}
   return <div className="max-w-sm rounded overflow-hidden shadow-lg bg-purple-100 ">
   <img className="w-full" src={place.photo?place.photo.images.large.url:{img}} alt={place.name}/>
   <div className="px-6 py-4">
@@ -45,7 +67,7 @@ export const Places = ({place}) => {
     
     <button type="button" className="mx-2 my-2 px-3 py-2 text-sm  text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full  text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" onClick={()=> window.open(place.website,'_blank')}>Website</button>
     
-    <button type="button" className="mx-2 my-2 px-3 py-2 text-sm text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full  text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Save Place</button>
+    <button type="button" className="mx-2 my-2 px-3 py-2 text-sm text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full  text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" onClick={handleSave}>Save Place</button>
   </div>
   
 </div>;
