@@ -45,16 +45,18 @@ router.post(
 // Delete an existing note using DELETE: /api/places/deleteplace/:id .Login required
 router.delete("/deleteplace/:id", fetchuser, async (req, res) => {
   try {
+    let success = false;
     let place = await Places.findById(req.params.id);
-    if (!place) return res.status(404).send("Not Found!!");
+    if (!place) return res.status(404).send({success, message:"Not Found!!"});
 
     if (place.user.toString() !== req.user.id)
-      return res.status(401).send("Touble authenticating");
+      return res.status(401).send({success, message:"Touble authenticating"});
 
     place = await Places.findByIdAndDelete(req.params.id);
-    res.json({ message: "Place deleted successfully", place });
+    success = true;
+    res.json({ success, message: "Place deleted successfully", place });
   } catch (err) {
-    res.status(500).send("SoMe ErRoR oCcUrEd");
+    res.status(500).send("Internal server ERROR");
     console.log(err);
   }
 });

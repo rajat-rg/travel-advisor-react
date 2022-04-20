@@ -1,27 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import placesContext from '../context/placesContext';
 import img from "../static/art.jpg"
 export const Places = ({place}) => { 
+  const context = useContext(placesContext)
+  const {addPlace} = context;
   const handleSave = async(e) =>{
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/places/addplace",
-    {method:"POST",
-      headers: {
-        "Content-Type":"application/json",
-        "auth-token": localStorage.getItem('token')
-      },
-      body:JSON.stringify({name:place.name,
-      location:place.location_id,
-      address:place.address,
-      phone:place.phone,
-      website:place.website,
-      price:place.price_level})
-    }
-  );
-  const json = await response.json();
-  if(json.success)
-  {
-    alert("place saved")
-  }
+    addPlace(place.name, place.location_id, place.address, place.phone, place.website, place.price_level)
 }
   return <div className="max-w-sm rounded overflow-hidden shadow-lg bg-purple-100 ">
   <img className="w-full" src={place.photo?place.photo.images.large.url:{img}} alt={place.name}/>

@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import { useContext } from "react/cjs/react.production.min";
+import alertContext from "../context/alertContext";
 const Login = () => {
+  const context = useContext(alertContext)
+  const {showAlert} = context;
     const [credentials, setCredentials] = useState({email:"", password:""})
     const navigate = useNavigate()
     const onChange = (e)=>{
@@ -23,6 +27,7 @@ const Login = () => {
       {
         localStorage.setItem('token', json.authtoken)
         navigate("/")
+        showAlert("green","Logged in ")
       }
     }
   return (

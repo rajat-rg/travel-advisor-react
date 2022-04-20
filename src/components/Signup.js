@@ -1,6 +1,9 @@
-import React, {useState} from "react";
+import React, {useState,useContext} from "react";
 import { useNavigate } from "react-router-dom";
+import alertContext from "../context/alertContext";
 const Signup = () => {
+  const context = useContext(alertContext)
+  const {showAlert} = context;
   const [credentials, setCredentials] = useState({name:"", email:"", password:"", password2:""})
     const navigate = useNavigate()
   const onChange = (e)=>{
@@ -23,6 +26,7 @@ const Signup = () => {
     {
       localStorage.setItem('token', json.authtoken)
       navigate("/")
+      showAlert("green","Account created successfully!")
     }
   }
   return (
