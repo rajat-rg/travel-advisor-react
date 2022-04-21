@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {useNavigate} from "react-router-dom";
-import { useContext } from "react/cjs/react.production.min";
 import alertContext from "../context/alertContext";
 const Login = () => {
   const context = useContext(alertContext)
@@ -28,6 +27,9 @@ const Login = () => {
         localStorage.setItem('token', json.authtoken)
         navigate("/")
         showAlert("green","Logged in ")
+      }
+      else{
+        showAlert("purple","Some error occured")
       }
     }
   return (

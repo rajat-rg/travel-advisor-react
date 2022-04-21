@@ -1,15 +1,15 @@
 import React, {useContext} from 'react';
 import placesContext from '../context/placesContext';
-import img from "../static/art.jpg"
-export const Places = ({place}) => { 
+import img from "../static/hotel.jpg"
+export const Places = ({place}) => {
   const context = useContext(placesContext)
-  const {addPlace} = context;
+  const {addPlace} = context; 
   const handleSave = async(e) =>{
     e.preventDefault();
     addPlace(place.name, place.location_id, place.address, place.phone, place.website, place.price_level)
 }
   return <div className="max-w-sm rounded overflow-hidden shadow-lg bg-purple-100 ">
-  <img className="w-full" src={place.photo?place.photo.images.large.url:{img}} alt={place.name}/>
+  <img className="w-full" src={place.photo?place.photo.images.large.url:img} alt={place.name}/>
   <div className="px-6 py-4">
     <div className="font-bold text-xl mb-2 text-purple-900">{place.name}</div>
 

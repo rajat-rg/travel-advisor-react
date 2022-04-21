@@ -28,6 +28,9 @@ const Signup = () => {
       navigate("/")
       showAlert("green","Account created successfully!")
     }
+    else{
+      showAlert("purple","Some error occured")
+    }
   }
   return (
     <>

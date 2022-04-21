@@ -13,10 +13,9 @@ import Saved from './components/Saved';
 import PlacesState from './context/PlacesState';
 import Alert from './components/Alert';
 import AlertState from './context/AlertState';
-// REACT_APP_RAPIDAPI_KEY = d9a9e9776bmsh81b21eaa5580c93p1ae022jsn20354001224d
 function App() {
   return (
-    <div className="App bg-purple-100">
+    <div className="App bg-violet-200">
       <SlugState>
       <AlertState>
       <PlacesState>

@@ -1,15 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate} from "react-router-dom";
-
 import logo from "../static/travel.svg";
-
+import alertContext from "../context/alertContext";
 export const Navbar = () => {
+  const {showAlert} = useContext(alertContext)
   const navigate = useNavigate()
   let location = useLocation();
   const handleLogout = ()=>{
       localStorage.removeItem('token')
       navigate("/login")
+      showAlert("purple", "logged out")
   }
   return (
     <div>

@@ -26,6 +26,9 @@ const PlacesState = (props)=>{
       {
         showAlert("purple","place saved successfully!!")
       }
+      else{
+        showAlert("purple","Some error occured")
+      }
     }
     const getPlaces = async() =>{
       const response = await fetch("http://localhost:5000/api/places/fetchplaces",
@@ -55,6 +58,9 @@ const PlacesState = (props)=>{
     if(json.success)
       {
         showAlert("orange","place deleted successfully!!")
+      }
+      else{
+        showAlert("purple","Some error occured")
       }
 
   }
